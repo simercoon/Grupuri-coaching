@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program de Coaching — 3 Luni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F5F0E8;
+  --white:#FFFFFF;
+  --ink:#2A2520;
+  --ink2:#5A534C;
+  --ink3:#9A938C;
+  --border:rgba(42,37,32,0.10);
+  --border2:rgba(42,37,32,0.16);
+
+  --gold:#B8863C;--gold-tag:#EDE0C8;--gold-text:#7A5820;--gold-btn:#EFE2C4;--gold-btntext:#5A3E10;
+  --rose:#C06878;--rose-tag:#F2D8DC;--rose-text:#8A3848;--rose-btn:#F2D8DC;--rose-btntext:#6A2838;
+  --sage:#4A7C68;--sage-tag:#CCDFD6;--sage-text:#2A5040;--sage-btn:#CCDFD6;--sage-btntext:#1A3828;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased;}
+
+/* HERO */
+.hero{text-align:center;padding:60px 24px 20px;max-width:700px;margin:0 auto;}
+.hero-eye{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,58px);font-weight:300;line-height:1.1;margin-bottom:28px;}
+.hero h1 em{font-style:italic;}
+
+/* INCLUDES */
+.includes{max-width:900px;margin:0 auto;padding:0 28px 48px;}
+.inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:28px;}
+.inc-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;}
+.inc-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.inc-text{font-size:13px;color:var(--ink2);line-height:1.5;}
+.inc-text strong{color:var(--ink);font-weight:500;display:block;margin-bottom:1px;font-size:13px;}
+
+/* 1:1 CARD */
+.one-card{max-width:900px;margin:0 auto 56px;padding:0 28px;}
+.one-inner{background:var(--white);border:1px solid var(--border2);border-radius:18px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.one-left h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--ink);margin-bottom:6px;}
+.one-left p{font-size:13px;color:var(--ink2);line-height:1.6;max-width:420px;}
+.one-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.one-price{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--ink);line-height:1;display:flex;align-items:baseline;gap:5px;}
+.one-price span{font-size:14px;color:var(--ink3);font-family:'Inter',sans-serif;font-weight:300;}
+.one-cta{display:inline-block;padding:10px 22px;background:var(--ink);color:var(--cream);border-radius:8px;font-size:13px;font-weight:400;font-family:'Inter',sans-serif;cursor:pointer;text-decoration:none;border:none;transition:opacity 0.15s;white-space:nowrap;}
+.one-cta:hover{opacity:0.82;}
+
+/* GRID 3 COLS */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;padding:0 28px 80px;}
+
+/* CARD */
+.card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:28px 24px 24px;display:flex;flex-direction:column;}
+
+.card-bar{width:32px;height:3px;border-radius:2px;margin-bottom:18px;}
+.bar-gold{background:var(--gold);}
+.bar-rose{background:var(--rose);}
+.bar-sage{background:var(--sage);}
+
+.card-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:14px;align-self:flex-start;}
+.tag-gold{background:var(--gold-tag);color:var(--gold-text);}
+.tag-rose{background:var(--rose-tag);color:var(--rose-text);}
+.tag-sage{background:var(--sage-tag);color:var(--sage-text);}
+
+.card-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.15;margin-bottom:8px;color:var(--ink);}
+.card-sub{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+
+/* LUNA ACCORDION */
+.luna{margin-bottom:4px;}
+
+.luna-btn{width:100%;background:none;border:none;padding:10px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Inter',sans-serif;text-align:left;gap:10px;}
+.luna-btn:hover .luna-btn-title{color:var(--ink);}
+
+.luna-btn-left{display:flex;flex-direction:column;gap:2px;flex:1;}
+.luna-btn-num{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);}
+.luna-btn-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--ink2);line-height:1.2;transition:color 0.15s;}
+.luna-btn-title.open{color:var(--ink);}
+
+.luna-chev{font-size:12px;color:var(--ink3);flex-shrink:0;transition:transform 0.2s;}
+.luna-chev.open{transform:rotate(180deg);}
+
+.luna-body{display:none;padding-bottom:8px;}
+.luna-body.open{display:block;}
+
+.luna-desc{font-size:12px;color:var(--ink2);line-height:1.6;margin-bottom:10px;padding-left:0;font-style:italic;}
+
+/* TIMELINE inside accordion */
+.tl{position:relative;padding-left:28px;}
+.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--border);}
+.tli{position:relative;margin-bottom:0;}
+.tli-dot{position:absolute;left:-28px;top:11px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;letter-spacing:0.02em;}
+.dot-gold{background:var(--gold-tag);color:var(--gold-text);border:1px solid var(--gold);}
+.dot-rose{background:var(--rose-tag);color:var(--rose-text);border:1px solid var(--rose);}
+.dot-sage{background:var(--sage-tag);color:var(--sage-text);border:1px solid var(--sage);}
+.dot-week{background:var(--white);color:var(--ink3);border:1px solid var(--border2);}
+
+.tli-body{padding:6px 0 6px;border-bottom:1px solid var(--border);}
+.tli:last-child .tli-body{border-bottom:none;}
+.tli-type{font-size:9px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:2px;}
+.type-gold{color:var(--gold);}
+.type-rose{color:var(--rose);}
+.type-sage{color:var(--sage);}
+.type-week{color:var(--ink3);}
+.tli-name{font-size:12px;color:var(--ink);line-height:1.35;}
+.tli-desc{font-size:11px;color:var(--ink3);margin-top:1px;}
+
+.luna-divider{border:none;border-top:1px solid var(--border);margin:2px 0;}
+
+/* PRICING */
+.card-price{margin-top:auto;padding-top:20px;border-top:1px solid var(--border);}
+.price-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1;color:var(--ink);display:flex;align-items:baseline;gap:5px;margin-bottom:5px;}
+.price-num span{font-size:14px;color:var(--ink3);font-family:'Inter',sans-serif;font-weight:300;}
+.price-future{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.pf-label{font-size:11px;color:var(--ink3);}
+.pf-val{font-size:11px;color:var(--ink3);text-decoration:line-through;}
+.pf-save{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;}
+.save-gold{background:var(--gold-tag);color:var(--gold-text);}
+.save-rose{background:var(--rose-tag);color:var(--rose-text);}
+.save-sage{background:var(--sage-tag);color:var(--sage-text);}
+/* two-option pricing blocks */
+.price-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+.price-opt{border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.price-opt-info{}
+.price-opt-label{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:3px;line-height:1.3;}
+.price-opt-detail{font-size:12px;color:var(--ink3);line-height:1.4;}
+.price-opt-cta{flex-shrink:0;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:opacity 0.15s;text-decoration:none;white-space:nowrap;}
+.price-opt-cta:hover{opacity:0.82;}
+.cta-gold{background:var(--gold-btn);color:var(--gold-btntext);}
+.cta-rose{background:var(--rose-btn);color:var(--rose-btntext);}
+.cta-sage{background:var(--sage-btn);color:var(--sage-btntext);}
+/* featured option */
+.price-opt.featured-gold{background:var(--gold-tag);border-color:transparent;}
+.price-opt.featured-rose{background:var(--rose-tag);border-color:transparent;}
+.price-opt.featured-sage{background:var(--sage-tag);border-color:transparent;}
+.price-opt.featured-gold .price-opt-label{color:var(--gold-text);}
+.price-opt.featured-rose .price-opt-label{color:var(--rose-text);}
+.price-opt.featured-sage .price-opt-label{color:var(--sage-text);}
+.price-opt.featured-gold .price-opt-detail{color:var(--gold-text);opacity:0.7;}
+.price-opt.featured-rose .price-opt-detail{color:var(--rose-text);opacity:0.7;}
+.price-opt.featured-sage .price-opt-detail{color:var(--sage-text);opacity:0.7;}
+.price-next{font-size:11px;color:var(--ink3);margin-top:10px;text-align:center;}
+
+@media(max-width:860px){.grid{grid-template-columns:1fr;padding:0 20px 60px;}.hero{padding:44px 20px 36px;}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-eye">Program de grup · 3 luni</p>
+  <h1>Schimbarea vine<br><em>din interior</em></h1>
+</div>
+
+<div class="includes">
+  <p style="text-align:center;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px;">Ce primești</p>
+  <div class="inc-grid">
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>Meditații, fișe &amp; materiale</strong>Audio și video săptămânal, pe tema grupului tău.</div></div>
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>2 ateliere live pe lună</strong>Sesiuni active cu întrebări, exerciții și lucru împreună.</div></div>
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>Grup privat pe tema ta</strong>Susținere extra în munca interioară, în fiecare săptămână.</div></div>
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>Spațiu de încărcare monitorizat</strong>Trimiți reflecțiile tale și le urmăresc personal.</div></div>
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>Reducere de 40€ față de prețul următor</strong>Prima grupă beneficiază de prețul fondator.</div></div>
+    <div class="inc-item"><div class="inc-dot"></div><div class="inc-text"><strong>Preț accesibil</strong>Ședință individuală cu mine: 80€. Preț de grup: 60€ / lună.</div></div>
+  </div>
+</div>
+
+<div class="one-card">
+  <div class="one-inner">
+    <div class="one-left">
+      <h3>Ședință 1:1 cu mine</h3>
+      <p>Susținere totală, personalizată și dedicată 100% ție. O oră în care lucrăm exact pe ceea ce ai nevoie în acel moment — fără structură de grup, fără așteptare.</p>
+    </div>
+    <div class="one-right">
+      <div class="one-price">80€ <span>/ ședință</span></div>
+      <a href="https://www.paypal.com/ncp/payment/YLM93VLLZX49U" target="_blank" class="one-cta">Vreau ședință 1:1</a>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;max-width:600px;margin:0 auto;padding:0 28px 40px;">
+  <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;">Cele 3 grupuri</p>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:10px;line-height:1.2;">Alege grupul potrivit pentru tine</h2>
+  <p style="font-size:14px;color:var(--ink2);line-height:1.7;">Fiecare grup lucrează pe o temă specifică, cu materiale, meditații și sesiuni live dedicate exact acelei arii.</p>
+</div>
+
+<div class="grid">
+
+  <!-- ══ BANI ══ -->
+  <div class="card">
+    <div class="card-bar bar-gold"></div>
+    <span class="card-tag tag-gold">Grup 1</span>
+    <h2 class="card-title">Bani &amp; Abundență</h2>
+    <p class="card-sub">Pentru cei care simt că banii sunt mereu insuficienți, indiferent cât muncesc — și vor să schimbe asta din rădăcină.</p>
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 1</span>
+          <span class="luna-btn-title">Dezvăluie Codul Ascuns al Banilor</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Descoperă ce rulează în subconștientul tău și îți influențează realitatea financiară.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-gold">A1</div><div class="tli-body"><p class="tli-type type-gold">Atelier 1</p><p class="tli-name">Energia Banilor: Ce Creezi Fără Să Îți Dai Seama</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Oglinda Relației Tale cu Banii</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Povestea Care Ți-a Scris Destinul Financiar</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Cele 50 de Convingeri Care Îți Controlează Veniturile</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Reconstruirea Legăturii cu Abundența</p></div></div>
+          <div class="tli"><div class="tli-dot dot-gold">A2</div><div class="tli-body"><p class="tli-type type-gold">Atelier 2</p><p class="tli-name">Ecuația Manifestării Financiare</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 2</span>
+          <span class="luna-btn-title">Devino Versiunea Care Poate Primi</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Nu schimbi doar rezultatele. Schimbi persoana care le creează.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-gold">A3</div><div class="tli-body"><p class="tli-type type-gold">Atelier 1</p><p class="tli-name">Saltul de Identitate</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">O Zi din Viața Noului Tău Eu</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Fundația Siguranței Financiare</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Dincolo de Rezistență</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Instalarea Noilor Obiceiuri</p></div></div>
+          <div class="tli"><div class="tli-dot dot-gold">A4</div><div class="tli-body"><p class="tli-type type-gold">Atelier 2</p><p class="tli-name">Îmbracă Noua Identitate</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 3</span>
+          <span class="luna-btn-title">Manifestare Activă</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Transformă schimbările interioare în rezultate vizibile.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-gold">A5</div><div class="tli-body"><p class="tli-type type-gold">Atelier 1</p><p class="tli-name">Cum Se Colapsează Realitatea</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Activarea Câmpului de Manifestare</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Alinierea cu Realitatea Dorită</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Accelerarea Manifestării</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Intrarea în Noua Realitate</p></div></div>
+          <div class="tli"><div class="tli-dot dot-gold">A6</div><div class="tli-body"><p class="tli-type type-gold">Atelier Final</p><p class="tli-name">Ceremonia Abundenței</p><p class="tli-desc">Integrare, celebrare și activarea următorului nivel.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-price">
+      <div class="price-opts">
+        <div class="price-opt featured-gold">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată integrală 3 luni — 150€</div>
+            <div class="price-opt-detail">Economisești 30€ față de plata în rate</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/HXKANFMZ83ZVN" target="_blank" class="price-opt-cta cta-gold">Achit integral</a>
+        </div>
+        <div class="price-opt">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată în rate — 60€ / lună</div>
+            <div class="price-opt-detail">Lunar, fără angajament</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/278PFBGAMYTQ2" target="_blank" class="price-opt-cta cta-gold">Achit în rate</a>
+        </div>
+      </div>
+      <p class="price-next">Prețul următor: <s>100€ / lună</s></p>
+    </div>
+  </div>
+
+  <!-- ══ SP ══ -->
+  <div class="card">
+    <div class="card-bar bar-rose"></div>
+    <span class="card-tag tag-rose">Grup 2</span>
+    <h2 class="card-title">Persoana Specifică</h2>
+    <p class="card-sub">Pentru cei care vor să manifeste o relație cu o persoană anume — cu claritate și certitudine, nu cu anxietate.</p>
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 1</span>
+          <span class="luna-btn-title">Revenirea la Tine</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Înainte să schimbi relația, îți schimbi identitatea.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-rose">A1</div><div class="tli-body"><p class="tli-type type-rose">Atelier 1</p><p class="tli-name">Ecuația Iubirii Manifestate</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Versiunea Care Are Deja Relația Dorită</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Rescrierea Dialogului Interior</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Vindecarea Copilului Care Încă Așteaptă Iubire</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Noua Poveste Despre Tine</p></div></div>
+          <div class="tli"><div class="tli-dot dot-rose">A2</div><div class="tli-body"><p class="tli-type type-rose">Atelier 2</p><p class="tli-name">Puterea Reviziei</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 2</span>
+          <span class="luna-btn-title">Schimbă Perspectiva, Schimbă Realitatea</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Relațiile nu sunt doar despre cine sunt ceilalți. Sunt și despre cum îi percepem.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-rose">A3</div><div class="tli-body"><p class="tli-type type-rose">Atelier 1</p><p class="tli-name">Coborârea de pe Piedestal</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Originea Poveștii Despre Persoana Specifică</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Crearea Versiunii Ideale</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Iertare, Eliberare și Spațiu pentru Nou</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Dincolo de Rezistențe</p></div></div>
+          <div class="tli"><div class="tli-dot dot-rose">A4</div><div class="tli-body"><p class="tli-type type-rose">Atelier 2</p><p class="tli-name">Eliberarea Blocajelor Invizibile</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 3</span>
+          <span class="luna-btn-title">Întruparea Noii Realități</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Nu mai construiești dorința. Începi să trăiești din ea.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-rose">A5</div><div class="tli-body"><p class="tli-type type-rose">Atelier 1</p><p class="tli-name">Aleg Noua Poveste</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Las în Urmă Tot Ce Nu Mai Sunt</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Activarea Dorinței Împlinite</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Arta de a Menține Starea</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">O Zi din Viața Relației Dorite</p></div></div>
+          <div class="tli"><div class="tli-dot dot-rose">A6</div><div class="tli-body"><p class="tli-type type-rose">Atelier Final</p><p class="tli-name">Persistența Creează Realitatea</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-price">
+      <div class="price-opts">
+        <div class="price-opt featured-rose">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată integrală 3 luni — 150€</div>
+            <div class="price-opt-detail">Economisești 30€ față de plata în rate</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/H83AQ5UXFTQ8G" target="_blank" class="price-opt-cta cta-rose">Achit integral</a>
+        </div>
+        <div class="price-opt">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată în rate — 60€ / lună</div>
+            <div class="price-opt-detail">Lunar, fără angajament</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/AW2RLVTXUTEX6" target="_blank" class="price-opt-cta cta-rose">Achit în rate</a>
+        </div>
+      </div>
+      <p class="price-next">Prețul următor: <s>100€ / lună</s></p>
+    </div>
+  </div>
+
+  <!-- ══ SINE ══ -->
+  <div class="card">
+    <div class="card-bar bar-sage"></div>
+    <span class="card-tag tag-sage">Grup 3</span>
+    <h2 class="card-title">Iubire de Sine</h2>
+    <p class="card-sub">Pentru cei care vor să construiască o relație autentică cu ei înșiși — nu de suprafață, ci profundă și durabilă.</p>
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 1</span>
+          <span class="luna-btn-title">Întoarcerea Acasă</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Înainte să devii cine vrei să fii, te reîntâlnești cu cine ai fost.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-sage">A1</div><div class="tli-body"><p class="tli-type type-sage">Atelier 1</p><p class="tli-name">Întâlnirea cu Copilul Interior</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Rana Care Îți Conduce Viața</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Adultul de Care Ai Avut Mereu Nevoie</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Cine Ai Învățat Să Fii</p></div></div>
+          <div class="tli"><div class="tli-dot dot-sage">A2</div><div class="tli-body"><p class="tli-type type-sage">Atelier 2</p><p class="tli-name">Puterea Reviziei</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Vindecarea Poveștilor Emoționale</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 2</span>
+          <span class="luna-btn-title">Cea Mai Importantă Relație din Viața Ta</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Relația cu tine stabilește standardul pentru toate celelalte relații.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-sage">A3</div><div class="tli-body"><p class="tli-type type-sage">Atelier 1</p><p class="tli-name">Cum Construiești Iubirea de Sine</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Vocea Care Te Însoțește Zilnic</p><p class="tli-desc">Cuvinte de afirmare</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Alege-te în Fiecare Zi</p><p class="tli-desc">Timp de calitate cu tine</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Devino Propriul Tău Sprijin</p><p class="tli-desc">Acte de serviciu și daruri</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Întoarcerea în Corp</p><p class="tli-desc">Atingere și siguranță</p></div></div>
+          <div class="tli"><div class="tli-dot dot-sage">A4</div><div class="tli-body"><p class="tli-type type-sage">Atelier 2</p><p class="tli-name">Despărțirea de Vechea Versiune</p></div></div>
+        </div>
+      </div>
+    </div>
+    <hr class="luna-divider">
+
+    <div class="luna">
+      <button class="luna-btn" onclick="tog(this)">
+        <div class="luna-btn-left">
+          <span class="luna-btn-num">Luna 3</span>
+          <span class="luna-btn-title">Reinventarea</span>
+        </div>
+        <span class="luna-chev">▾</span>
+      </button>
+      <div class="luna-body">
+        <p class="luna-desc">Nu mai repari trecutul. Creezi viitorul.</p>
+        <div class="tl">
+          <div class="tli"><div class="tli-dot dot-sage">A5</div><div class="tli-body"><p class="tli-type type-sage">Atelier 1</p><p class="tli-name">Arhitectul Noii Tale Identități</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S1</div><div class="tli-body"><p class="tli-type type-week">Săpt. 1</p><p class="tli-name">Cartografierea Vechiului Eu</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S2</div><div class="tli-body"><p class="tli-type type-week">Săpt. 2</p><p class="tli-name">Construirea Versiunii Ideale</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S3</div><div class="tli-body"><p class="tli-type type-week">Săpt. 3</p><p class="tli-name">Dincolo de Îndoială</p></div></div>
+          <div class="tli"><div class="tli-dot dot-week">S4</div><div class="tli-body"><p class="tli-type type-week">Săpt. 4</p><p class="tli-name">Energia pe Care Alegi Să o Întrupezi</p></div></div>
+          <div class="tli"><div class="tli-dot dot-sage">A6</div><div class="tli-body"><p class="tli-type type-sage">Atelier Final</p><p class="tli-name">Mesajul Versiunii Tale Ideale</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-price">
+      <div class="price-opts">
+        <div class="price-opt featured-sage">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată integrală 3 luni — 150€</div>
+            <div class="price-opt-detail">Economisești 30€ față de plata în rate</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/FMG83TQJH9KSL" target="_blank" class="price-opt-cta cta-sage">Achit integral</a>
+        </div>
+        <div class="price-opt">
+          <div class="price-opt-info">
+            <div class="price-opt-label">Plată în rate — 60€ / lună</div>
+            <div class="price-opt-detail">Lunar, fără angajament</div>
+          </div>
+          <a href="https://www.paypal.com/ncp/payment/XX5KMURVFRA4E" target="_blank" class="price-opt-cta cta-sage">Achit în rate</a>
+        </div>
+      </div>
+      <p class="price-next">Prețul următor: <s>100€ / lună</s></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function tog(btn) {
+  const body = btn.nextElementSibling;
+  const chev = btn.querySelector('.luna-chev');
+  const title = btn.querySelector('.luna-btn-title');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+  title.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
